@@ -51,7 +51,8 @@ img {
 /* -------- Home ---------- */
 
 @import url("./home.css");
-
+/* -------- Avatar ---------- */
+@import url("./avatar.css");
 
 
 
