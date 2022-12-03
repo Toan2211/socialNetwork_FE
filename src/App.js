@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Header from './components/Header/Header'
 import Home from './pages/Home/Home'
 import Login from './pages/Login'
+import Register from './pages/register'
 import { React } from 'react'
 
 function App() {
@@ -17,7 +18,9 @@ function App() {
                         path="/"
                         element={auth.token ? <Home /> : <Login />}
                     />
+                    <Route path="/register" element={<Register />} />
                 </Routes>
+
             </BrowserRouter>
         </div>
     )
