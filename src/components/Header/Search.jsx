@@ -16,7 +16,7 @@ const Search = () => {
                 &times;
             </div>
 
-            <button type="submit" style={{display: 'none'}}>Search</button>
+            <button type="submit" style={{ display: 'none' }}>Search</button>
         </form>
     )
 }

@@ -1,0 +1,34 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.7
+
+jobs:
+  test:
+    docker:
+      - image: cimg/node:16.10
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: npm
+      - run:
+          name: Lint
+          command: npm run lint
+  build:
+    docker:
+      - image: cimg/node:16.10
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: npm
+      - run:
+          name: Run build
+          command: npm run build
+
+workflows:
+  sample:
+    jobs:
+      - test
+      - build:
+          requires:
+            - test
