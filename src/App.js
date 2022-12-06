@@ -5,6 +5,7 @@ import Home from './pages/Home/Home'
 import Login from './pages/Login'
 import Register from './pages/register'
 import { React } from 'react'
+import Profile from './pages/profile/[id]'
 
 function App() {
     const { auth } = useSelector(state => state)
@@ -19,6 +20,9 @@ function App() {
                         element={auth.token ? <Home /> : <Login />}
                     />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/profile/:id" element={<Profile />} />
+                    {/* <PrivateRouter path="/:page" element={<PageRender />} /> */}
+                    {/* <PrivateRouter path="/:page/:id" element={<PageRender />} /> */}
                 </Routes>
 
             </BrowserRouter>

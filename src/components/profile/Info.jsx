@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Avatar from '../Avatar'
-import FollowBtn from '../FollowBtn'
-
+import EditProfile from './EditProfile'
+// import FollowBtn from '../FollowBtn'
+import { GLOBALTYPES } from '../../redux/actions/globalTypes'
 const Info = ({ id, auth, profile, dispatch }) => {
     const [userData, setUserData] = useState([])
-
+    const [onEdit, setOnEdit] = useState(false)
     useEffect(() => {
         if (id === auth.user._id) {
             setUserData([auth.user])
@@ -14,6 +15,13 @@ const Info = ({ id, auth, profile, dispatch }) => {
         }
     }, [id, auth, dispatch, profile.users])
 
+    useEffect(() => {
+        if (onEdit) {
+            dispatch({ type: GLOBALTYPES.MODAL, payload: true })
+        } else {
+            dispatch({ type: GLOBALTYPES.MODAL, payload: false })
+        }
+    }, [onEdit, dispatch])
 
     return (
         <div className="info">
@@ -28,11 +36,11 @@ const Info = ({ id, auth, profile, dispatch }) => {
                                 {
                                     user._id === auth.user._id
                                         ? <button className="btn btn-outline-info"
-                                        >
+                                            onClick={() => setOnEdit(true)}>
                                             Edit Profile
                                         </button>
-
-                                        : <FollowBtn user={user} />
+                                        : ''
+                                    // : <FollowBtn user={user} />
                                 }
 
 
@@ -55,7 +63,9 @@ const Info = ({ id, auth, profile, dispatch }) => {
                             </a>
                             <p>{user.story}</p>
                         </div>
-
+                        {
+                            onEdit && <EditProfile setOnEdit={setOnEdit} />
+                        }
                     </div>
                 ))
             }
