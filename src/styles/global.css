@@ -55,8 +55,14 @@ img {
 @import url("./avatar.css");
 /* -------- Profile ---------- */
 @import url("./profile.css");
+/* -------- Icons---------- */
+@import url("./icons.css");
 
+/* -------- Call Modal---------- */
+@import url("./call_modal.css");
 
+/* -------- Status Modal ---------- */
+@import url("./status_modal.css");
 
 
 /* --------- Responsive ------ */
