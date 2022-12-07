@@ -40,7 +40,7 @@ const Info = ({ id, auth, profile, dispatch }) => {
                                             Edit Profile
                                         </button>
                                         : ''
-                                    // : <FollowBtn user={user} />
+                                        // : <FollowBtn user={user} />
                                 }
 
 
