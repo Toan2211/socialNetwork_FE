@@ -10,8 +10,9 @@ import { useEffect } from 'react'
 import { refreshToken } from './redux/actions/authAction'
 import { GLOBALTYPES } from './redux/actions/globalTypes'
 import io from 'socket.io-client'
+import StatusModal from './components/StatusModal'
 function App() {
-    const { auth } = useSelector(state => state)
+    const { auth, status } = useSelector(state => state)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(refreshToken())
@@ -24,7 +25,7 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 {auth.token && <Header />}
-
+                {status && <StatusModal />}
                 <Routes>
                     <Route
                         path="/"
