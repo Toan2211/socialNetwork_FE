@@ -1,6 +1,6 @@
 import { GLOBALTYPES } from './globalTypes'
 import { postDataAPI, deleteDataAPI, getDataAPI, patchDataAPI } from '../../utils/fetchData'
-
+//Notification Action
 export const NOTIFY_TYPES = {
     GET_NOTIFIES: 'GET_NOTIFIES',
     CREATE_NOTIFY: 'CREATE_NOTIFY',
