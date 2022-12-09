@@ -12,6 +12,8 @@ import { GLOBALTYPES } from './redux/actions/globalTypes'
 import io from 'socket.io-client'
 import StatusModal from './components/StatusModal'
 import { getPosts } from './redux/actions/postAction'
+import Post from './pages/post/[id]'
+import { getNotifies } from './redux/actions/notifyAction'
 function App() {
     const { auth, status } = useSelector(state => state)
     const dispatch = useDispatch()
@@ -25,6 +27,7 @@ function App() {
     useEffect(() => {
         if (auth.token) {
             dispatch(getPosts(auth.token))
+            dispatch(getNotifies(auth.token))
         }
     }, [dispatch, auth.token])
     return (
@@ -39,6 +42,7 @@ function App() {
                     />
                     <Route path="/register" element={<Register />} />
                     <Route path="/profile/:id" element={<Profile />} />
+                    <Route path="/post/:id" element={<Post />} />
                     {/* <PrivateRouter path="/:page" element={<PageRender />} /> */}
                     {/* <PrivateRouter path="/:page/:id" element={<PageRender />} /> */}
                 </Routes>

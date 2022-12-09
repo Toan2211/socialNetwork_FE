@@ -6,7 +6,7 @@ import profile from './profileReducer'
 import socket from './socketReducer'
 import homePosts from './postReducer'
 import status from './statusReducer'
-
+import detailPost from './detailPostReducer'
 export default combineReducers({
     auth,
     theme,
@@ -14,5 +14,6 @@ export default combineReducers({
     profile,
     socket,
     homePosts,
-    status
+    status,
+    detailPost
 })
