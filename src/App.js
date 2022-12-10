@@ -16,7 +16,6 @@ import Post from './pages/post/[id]'
 import { getNotifies } from './redux/actions/notifyAction'
 import Message from './pages/message'
 import Conversation from './pages/message/[id]'
-import Peer from 'peerjs'
 import Alert from './components/alert/Alert'
 import SocketClient from './SocketClient'
 function App() {
@@ -29,14 +28,7 @@ function App() {
         dispatch({ type: GLOBALTYPES.SOCKET, payload: socket })
         return () => socket.close()
     }, [dispatch])
-    useEffect(() => {
-        const newPeer = new Peer(undefined, {
-            path: '/',
-            secure: true
-        })
 
-        dispatch({ type: GLOBALTYPES.PEER, payload: newPeer })
-    }, [dispatch])
     useEffect(() => {
         if (auth.token) {
             dispatch(getPosts(auth.token))
