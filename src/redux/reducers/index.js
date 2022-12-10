@@ -7,6 +7,9 @@ import socket from './socketReducer'
 import homePosts from './postReducer'
 import status from './statusReducer'
 import detailPost from './detailPostReducer'
+import message from './messageReducer'
+import online from './onlineReducer'
+import peer from './peerReducer'
 export default combineReducers({
     auth,
     theme,
@@ -15,5 +18,8 @@ export default combineReducers({
     socket,
     homePosts,
     status,
-    detailPost
+    detailPost,
+    message,
+    online,
+    peer
 })

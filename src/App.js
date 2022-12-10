@@ -14,6 +14,11 @@ import StatusModal from './components/StatusModal'
 import { getPosts } from './redux/actions/postAction'
 import Post from './pages/post/[id]'
 import { getNotifies } from './redux/actions/notifyAction'
+import Message from './pages/message'
+import Conversation from './pages/message/[id]'
+import Peer from 'peerjs'
+import Alert from './components/alert/Alert'
+import SocketClient from './SocketClient'
 function App() {
     const { auth, status } = useSelector(state => state)
     const dispatch = useDispatch()
@@ -25,6 +30,14 @@ function App() {
         return () => socket.close()
     }, [dispatch])
     useEffect(() => {
+        const newPeer = new Peer(undefined, {
+            path: '/',
+            secure: true
+        })
+
+        dispatch({ type: GLOBALTYPES.PEER, payload: newPeer })
+    }, [dispatch])
+    useEffect(() => {
         if (auth.token) {
             dispatch(getPosts(auth.token))
             dispatch(getNotifies(auth.token))
@@ -32,21 +45,28 @@ function App() {
     }, [dispatch, auth.token])
     return (
         <div className="App">
+            <Alert />
             <BrowserRouter>
                 {auth.token && <Header />}
                 {status && <StatusModal />}
+                {auth.token && <SocketClient />}
                 <Routes>
                     <Route
                         path="/"
                         element={auth.token ? <Home /> : <Login />}
                     />
                     <Route path="/register" element={<Register />} />
-                    <Route path="/profile/:id" element={<Profile />} />
+                    <Route
+                        path="/profile/:id"
+                        element={<Profile />}
+                    />
                     <Route path="/post/:id" element={<Post />} />
-                    {/* <PrivateRouter path="/:page" element={<PageRender />} /> */}
-                    {/* <PrivateRouter path="/:page/:id" element={<PageRender />} /> */}
+                    <Route path="/message" element={<Message />} />
+                    <Route
+                        path="/message/:id"
+                        element={<Conversation />}
+                    />
                 </Routes>
-
             </BrowserRouter>
         </div>
     )
