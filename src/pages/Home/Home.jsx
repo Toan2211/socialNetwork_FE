@@ -5,6 +5,7 @@ import LoadIcon from '../../images/loading.gif'
 import { useSelector } from 'react-redux'
 import Posts from '../../components/home/Posts'
 import Status from '../../components/home/Status'
+import RightSideBar from '../../components/home/RightSideBar'
 
 
 let scroll = 0
@@ -45,7 +46,9 @@ const Home = () => {
                     )}
             </div>
 
-            <div className="col-md-3"></div>
+            <div className="col-md-3">
+                <RightSideBar />
+            </div>
         </div>
     )
 }
