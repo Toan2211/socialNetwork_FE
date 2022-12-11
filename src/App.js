@@ -18,6 +18,7 @@ import Message from './pages/message'
 import Conversation from './pages/message/[id]'
 import Alert from './components/alert/Alert'
 import SocketClient from './SocketClient'
+import { getSuggestions } from './redux/actions/suggestionsAction'
 function App() {
     const { auth, status } = useSelector(state => state)
     const dispatch = useDispatch()
@@ -33,6 +34,7 @@ function App() {
         if (auth.token) {
             dispatch(getPosts(auth.token))
             dispatch(getNotifies(auth.token))
+            dispatch(getSuggestions(auth.token))
         }
     }, [dispatch, auth.token])
     return (

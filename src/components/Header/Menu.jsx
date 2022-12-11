@@ -4,13 +4,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../../redux/actions/authAction'
 import { GLOBALTYPES } from '../../redux/actions/globalTypes'
 import Avatar from '../Avatar'
+import NotifyModal from '../NotifyModal'
 
 const Menu = () => {
     const navLinks = [
         { label: 'Message', icon: 'chat', path: '/message' }
     ]
 
-    const { auth, theme } = useSelector(state => state)
+    const { auth, theme, notify } = useSelector(state => state)
     const dispatch = useDispatch()
     const { pathname } = useLocation()
 
@@ -50,13 +51,28 @@ const Menu = () => {
                     >
                         <span
                             className="material-icons"
+                            style={{
+                                color:
+                                    notify.data.length > 0
+                                        ? 'crimson'
+                                        : ''
+                            }}
                         >
                             notifications
                         </span>
 
                         <span className="notify_length">
+                            {notify.data.length}
                         </span>
                     </span>
+
+                    <div
+                        className="dropdown-menu"
+                        aria-labelledby="navbarDropdown"
+                        style={{ transform: 'translateX(75px)' }}
+                    >
+                        <NotifyModal />
+                    </div>
                 </li>
 
                 <li
