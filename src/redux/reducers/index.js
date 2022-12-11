@@ -10,6 +10,7 @@ import detailPost from './detailPostReducer'
 import message from './messageReducer'
 import online from './onlineReducer'
 import peer from './peerReducer'
+import suggestions from './suggestionsReducer'
 export default combineReducers({
     auth,
     theme,
@@ -21,5 +22,6 @@ export default combineReducers({
     detailPost,
     message,
     online,
-    peer
+    peer,
+    suggestions
 })
