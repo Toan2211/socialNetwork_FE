@@ -11,6 +11,7 @@ import message from './messageReducer'
 import online from './onlineReducer'
 import peer from './peerReducer'
 import suggestions from './suggestionsReducer'
+import notify from './notifyReducer'
 export default combineReducers({
     auth,
     theme,
@@ -23,5 +24,6 @@ export default combineReducers({
     message,
     online,
     peer,
-    suggestions
+    suggestions,
+    notify
 })
