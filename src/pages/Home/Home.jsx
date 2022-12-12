@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import Posts from '../../components/home/Posts'
 import Status from '../../components/home/Status'
 import RightSideBar from '../../components/home/RightSideBar'
+import LeftSideBar from '../../components/home/LeftSideBar'
 
 
 let scroll = 0
@@ -28,7 +29,9 @@ const Home = () => {
 
     return (
         <div className="home row mx-0">
-            <div className="col-md-2"></div>
+            <div className="col-md-2">
+                <LeftSideBar />
+            </div>
             <div className="col-md-7">
                 <Status />
 

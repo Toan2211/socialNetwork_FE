@@ -86,3 +86,27 @@
 .home {
     background-color: #EEEEEE;
 }
+.left-side-bar {
+    position: fixed;
+    top: 14vh;
+    width: 220px;
+}
+.list-action-post {
+    list-style: none;
+}
+.list-action-post > li {
+    display: inline-block;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 10px 4px;
+    width: 100%;
+    border-radius: 10px;
+}
+.list-action-post > li:hover {
+    color: #007bff;
+    background-color: #F0F2F5;
+}
+.posts-action-active {
+    color: #007bff;
+    background-color: #F0F2F5;
+}
