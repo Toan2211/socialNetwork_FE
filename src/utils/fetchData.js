@@ -1,9 +1,10 @@
 import axios from 'axios'
 import { BASE_URL } from './config'
 
-export const getDataAPI = async (url, token) => {
+export const getDataAPI = async (url, token, params = null) => {
     const res = await axios.create({ baseURL: BASE_URL }).get(`/api/${url}`, {
-        headers: { Authorization: token }
+        headers: { Authorization: token },
+        params: params
     })
     return res
 }
